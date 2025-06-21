@@ -6,12 +6,12 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jodhavishalsingh@gmail.com&item_name=Donation For Plugin
 
-Requires at least: 6.0
-Tested up to: 6.6
+Requires at least: 6.7
+Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 3.2
 WC requires at least: 8.0
-WC tested up to: 9.2
+WC tested up to: 9.9
+Stable tag: 3.3
 
 Partially ship an order in woocommerce and display shipment details on view order page.
 
@@ -67,6 +67,11 @@ You can write us directly for premium version help or [Contact us](https://wpexp
 6. Shipment details in tooltip order details
 
 == Changelog ==
+
+= 3.3 - 21/06/2025 =
+* Fix - Escaped MySQL queries for improved security.
+* Fix - Sanitized POST variables properly.
+* Tweak - Compatibility check and Tested with latest version WC 9.9
 
 = 3.2 - 06/09/2024 =
 * Fix - Mark all ordered items as shipped when the order status changes to Completed.
