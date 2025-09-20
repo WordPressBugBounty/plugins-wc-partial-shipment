@@ -1,7 +1,7 @@
-=== Woocommerce Partial Shipment ===
+=== Partial Shipment for Woocommerce ===
 
 Contributors: wpexpertshub, jodhavishalsingh
-Tags: Woocommerce Partial Shipment,Partial Shipment,woocommerce Shipment,Woocommerce Partial Shipping,Woocommerce Shipping
+Tags: Partial Shipment for Woocommerce,Woocommerce Partial Shipment,Partial Shipment,woocommerce Shipment,Woocommerce Partial Shipping
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jodhavishalsingh@gmail.com&item_name=Donation For Plugin
@@ -11,7 +11,7 @@ Tested up to: 6.8.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 9.9
-Stable tag: 3.3
+Stable tag: 3.4
 
 Partially ship an order in woocommerce and display shipment details on view order page.
 
@@ -60,7 +60,7 @@ You can write us directly for premium version help or [Contact us](https://wpexp
 == Screenshots ==
 
 1. Order screen shipment icons and buttons
-2. Woocommerce partial shipment settings
+2. partial shipment for Woocommerce settings
 3. View order page
 4. Order details page
 5. Shipment details in tooltip

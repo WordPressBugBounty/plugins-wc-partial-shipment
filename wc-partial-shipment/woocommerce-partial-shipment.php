@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Plugin Name: Woocommerce Partial Shipment
+ * Plugin Name: Partial Shipment for Woocommerce
  * Plugin URI: https://wpexpertshub.com/
  * Description: Add ability to partially ship an order.
  * Author: WpExperts Hub
- * Version: 3.3
+ * Version: 3.4
  * Author URI: https://wpexpertshub.com/
  * Text Domain: wxp-partial-shipment
  * License: GPLv3
