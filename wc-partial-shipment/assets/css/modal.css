@@ -1,0 +1,176 @@
+.wxp-modal {
+	box-sizing: border-box;
+	padding: 0;
+	border: 0;
+	max-width: 720px;
+	width: 90vw;
+	color: #1d2327;
+	background: transparent;
+}
+
+.wxp-modal::backdrop {
+	background: rgba(0, 0, 0, 0.55);
+}
+
+.wxp-modal * {
+	box-sizing: border-box;
+}
+
+.wxp-modal .wxp-modal-inner {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+	overflow: hidden;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.wxp-modal .wxp-modal-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 14px 18px;
+	border-bottom: 1px solid #dcdcde;
+	background: #f6f7f7;
+}
+
+.wxp-modal .wxp-modal-title {
+	margin: 0;
+	font-size: 15px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.wxp-modal .wxp-modal-close {
+	border: 0;
+	background: transparent;
+	color: #50575e;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0 6px;
+	border-radius: 4px;
+}
+
+.wxp-modal .wxp-modal-close:hover {
+	color: #b32d2e;
+	background: #fcf0f1;
+}
+
+.wxp-modal .wxp-modal-body {
+	padding: 18px;
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.wxp-modal .wxp-modal-foot {
+	padding: 12px 18px;
+	border-top: 1px solid #dcdcde;
+	background: #f6f7f7;
+}
+
+/* Shipment table rendered inside the modal */
+.wxp-modal .wxp-order-shipment-table table.widefat {
+	margin: 0;
+	border: 1px solid #dcdcde;
+}
+
+.wxp-modal .wxp-order-shipment-table table.widefat th,
+.wxp-modal .wxp-order-shipment-table table.widefat td {
+	padding: 8px 10px;
+	vertical-align: middle;
+}
+
+/* Align the checkbox column (header + body) consistently */
+.wxp-modal .wxp-order-shipment-table table.widefat .check-column {
+	width: 40px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px;
+}
+
+.wxp-modal .wxp-order-shipment-table table.widefat .check-column input[type="checkbox"] {
+	margin: 0;
+	vertical-align: middle;
+}
+
+.wxp-modal .wxp-order-shipment-table table.widefat thead th {
+	background: #f6f7f7;
+}
+
+.wxp-modal .wxp-order-shipment-table table.widefat td.txt-ctr input[type="number"].wxp-order-item-shipped {
+	text-align: center;
+}
+
+.wxp-modal .wxp-order-shipment-table input[type="number"].wxp-order-item-shipped {
+	width: 70px;
+}
+
+.wxp-modal .wxp_partial_ship_foot {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.wxp-modal .wxp_partial_ship_foot .wxp-select-foot {
+	display: inline-block;
+}
+
+.wxp-modal .wxp_partial_ship_foot .wxp-button-foot {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.wxp-modal .wxp_partial_ship_foot select,
+.wxp-modal .wxp_partial_ship_foot .button {
+	vertical-align: middle;
+}
+
+/* Buttons inside the modal should not be overridden by theme styles */
+.wxp-modal button.wxp-shipment-bulk-action,
+.wxp-modal button.wxp-item-action {
+	font-size: 13px;
+	line-height: 2.15384615;
+	min-height: 30px;
+	padding: 0 12px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+/* Primary action (Update) */
+.wxp-modal button.wxp-shipment-bulk-action,
+.wxp-modal button.wxp-item-action {
+	background: #2271b1;
+	border-color: #2271b1;
+	color: #fff;
+}
+
+.wxp-modal button.wxp-shipment-bulk-action:hover,
+.wxp-modal button.wxp-item-action:hover {
+	background: #135e96;
+	border-color: #135e96;
+	color: #fff;
+}
+
+/* Secondary action (Mark Unshipped) */
+.wxp-modal button.wxp-item-action-secondary {
+	background: #fff;
+	border-color: #2271b1;
+	color: #2271b1;
+}
+
+.wxp-modal button.wxp-item-action-secondary:hover {
+	background: #f0f6fc;
+	border-color: #135e96;
+	color: #135e96;
+}
