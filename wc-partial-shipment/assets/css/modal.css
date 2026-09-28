@@ -1,27 +1,44 @@
+/* Native <dialog> used on the order edit screen (assets/js/modal.js).
+   Follows the admin colour scheme through --wp-admin-theme-color. */
+
 .wxp-modal {
+	--wxp-accent: var(--wp-admin-theme-color, #2271b1);
+	--wxp-border: #dcdcde;
+	--wxp-divider: #f0f0f1;
+	--wxp-muted: #646970;
 	box-sizing: border-box;
+	width: min(640px, calc(100vw - 32px));
+	max-width: none;
+	max-height: calc(100vh - 48px);
 	padding: 0;
 	border: 0;
-	max-width: 720px;
-	width: 90vw;
-	color: #1d2327;
 	background: transparent;
+	color: #1d2327;
+	overflow: visible;
+}
+
+.wxp-modal--shipment {
+	width: min(760px, calc(100vw - 32px));
 }
 
 .wxp-modal::backdrop {
-	background: rgba(0, 0, 0, 0.55);
+	background: rgba(0, 0, 0, 0.5);
 }
 
-.wxp-modal * {
+.wxp-modal *,
+.wxp-modal *::before,
+.wxp-modal *::after {
 	box-sizing: border-box;
 }
 
 .wxp-modal .wxp-modal-inner {
-	background: #fff;
-	border: 1px solid #dcdcde;
-	border-radius: 8px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - 48px);
 	overflow: hidden;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08);
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 13px;
 	line-height: 1.5;
@@ -29,148 +46,476 @@
 
 .wxp-modal .wxp-modal-head {
 	display: flex;
+	flex: 0 0 auto;
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
-	padding: 14px 18px;
-	border-bottom: 1px solid #dcdcde;
-	background: #f6f7f7;
+	padding: 16px 20px;
+	border-bottom: 1px solid var(--wxp-divider);
 }
 
 .wxp-modal .wxp-modal-title {
 	margin: 0;
-	font-size: 15px;
-	font-weight: 600;
 	color: #1d2327;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
 }
 
 .wxp-modal .wxp-modal-close {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	margin: -6px -8px -6px 0;
+	padding: 0;
 	border: 0;
+	border-radius: 4px;
 	background: transparent;
 	color: #50575e;
 	font-size: 22px;
 	line-height: 1;
 	cursor: pointer;
-	padding: 0 6px;
-	border-radius: 4px;
 }
 
 .wxp-modal .wxp-modal-close:hover {
-	color: #b32d2e;
-	background: #fcf0f1;
+	background: var(--wxp-divider);
+	color: #1d2327;
+}
+
+.wxp-modal .wxp-modal-close:focus-visible {
+	outline: 2px solid var(--wxp-accent);
+	outline-offset: 1px;
 }
 
 .wxp-modal .wxp-modal-body {
-	padding: 18px;
-	max-height: 70vh;
+	flex: 1 1 auto;
+	min-height: 0;
 	overflow-y: auto;
 }
 
 .wxp-modal .wxp-modal-foot {
-	padding: 12px 18px;
-	border-top: 1px solid #dcdcde;
+	flex: 0 0 auto;
+	padding: 12px 20px;
+	border-top: 1px solid var(--wxp-divider);
 	background: #f6f7f7;
 }
 
-/* Shipment table rendered inside the modal */
-.wxp-modal .wxp-order-shipment-table table.widefat {
+.wxp-modal .wxp-modal-message {
+	margin: 20px;
+}
+
+/* ---------- Shipment: summary ---------- */
+
+.wxp-ship {
 	margin: 0;
-	border: 1px solid #dcdcde;
 }
 
-.wxp-modal .wxp-order-shipment-table table.widefat th,
-.wxp-modal .wxp-order-shipment-table table.widefat td {
-	padding: 8px 10px;
-	vertical-align: middle;
+.wxp-ship-summary {
+	padding: 14px 20px 16px;
+	border-bottom: 1px solid var(--wxp-divider);
+	background: #fbfbfc;
 }
 
-/* Align the checkbox column (header + body) consistently */
-.wxp-modal .wxp-order-shipment-table table.widefat .check-column {
-	width: 40px;
-	text-align: center;
-	vertical-align: middle;
-	padding: 8px;
-}
-
-.wxp-modal .wxp-order-shipment-table table.widefat .check-column input[type="checkbox"] {
-	margin: 0;
-	vertical-align: middle;
-}
-
-.wxp-modal .wxp-order-shipment-table table.widefat thead th {
-	background: #f6f7f7;
-}
-
-.wxp-modal .wxp-order-shipment-table table.widefat td.txt-ctr input[type="number"].wxp-order-item-shipped {
-	text-align: center;
-}
-
-.wxp-modal .wxp-order-shipment-table input[type="number"].wxp-order-item-shipped {
-	width: 70px;
-}
-
-.wxp-modal .wxp_partial_ship_foot {
+.wxp-ship-summary__row {
 	display: flex;
-	align-items: center;
-	gap: 10px;
 	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 10px;
+	margin-bottom: 10px;
 }
 
-.wxp-modal .wxp_partial_ship_foot .wxp-select-foot {
+.wxp-ship-summary__text {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.wxp-chip {
 	display: inline-block;
+	padding: 1px 9px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.6;
 }
 
-.wxp-modal .wxp_partial_ship_foot .wxp-button-foot {
+.wxp-chip.is-none {
+	background: #fcf0f1;
+	color: #b32d2e;
+}
+
+.wxp-chip.is-partial {
+	background: #fcf9e8;
+	color: #8a5a00;
+}
+
+.wxp-chip.is-full {
+	background: #edfaef;
+	color: #007017;
+}
+
+.wxp-chip.is-empty {
+	background: var(--wxp-divider);
+	color: var(--wxp-muted);
+}
+
+.wxp-dirty {
 	display: inline-flex;
 	align-items: center;
-	gap: 8px;
-	flex-wrap: wrap;
+	gap: 6px;
+	margin-left: auto;
+	color: var(--wxp-accent);
+	font-size: 12px;
+	font-weight: 600;
 }
 
-.wxp-modal .wxp_partial_ship_foot select,
-.wxp-modal .wxp_partial_ship_foot .button {
-	vertical-align: middle;
+.wxp-dirty::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: currentColor;
 }
 
-/* Buttons inside the modal should not be overridden by theme styles */
-.wxp-modal button.wxp-shipment-bulk-action,
-.wxp-modal button.wxp-item-action {
-	font-size: 13px;
-	line-height: 2.15384615;
-	min-height: 30px;
-	padding: 0 12px;
-	cursor: pointer;
-	border-width: 1px;
-	border-style: solid;
+.wxp-dirty[hidden] {
+	display: none;
+}
+
+.wxp-progress {
+	height: 6px;
+	overflow: hidden;
 	border-radius: 3px;
+	background: #e0e0e0;
+}
+
+.wxp-progress > span {
+	display: block;
+	width: 0;
+	height: 100%;
+	border-radius: 3px;
+	background: var(--wxp-accent);
+	transition: width 0.2s ease-out;
+}
+
+.wxp-progress.is-full > span {
+	background: #00a32a;
+}
+
+/* ---------- Shipment: item rows ---------- */
+
+.wxp-ship-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wxp-ship-row {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr) auto auto;
+	align-items: center;
+	gap: 8px 16px;
+	margin: 0;
+	padding: 12px 20px;
+	border-bottom: 1px solid var(--wxp-divider);
+}
+
+.wxp-ship-row:last-child {
+	border-bottom: 0;
+}
+
+.wxp-ship-row.is-changed {
+	background: #f6f9ff;
+	background: color-mix(in srgb, var(--wxp-accent) 5%, #fff);
+	box-shadow: inset 3px 0 0 var(--wxp-accent);
+}
+
+.wxp-ship-thumb {
+	display: block;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--wxp-divider);
+	border-radius: 4px;
+	background: #f6f7f7;
+	object-fit: cover;
+}
+
+.wxp-ship-info {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.wxp-ship-name {
+	overflow: hidden;
+	font-weight: 600;
+	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.wxp-ship-meta {
+	color: var(--wxp-muted);
+	font-size: 12px;
+}
+
+.wxp-ship-badge {
+	justify-self: end;
+}
+
+.wxp-ship-row.is-locked .wxp-ship-thumb {
+	opacity: 0.55;
+	filter: grayscale(1);
+}
+
+.wxp-ship-row.is-locked .wxp-ship-name {
+	color: var(--wxp-muted);
+}
+
+/* Badge colours (same palette as the order items table). */
+.wxp-modal .wxp-ship-status.wxp-shipped {
+	background: #dff2bf;
+	color: #270;
+}
+
+.wxp-modal .wxp-ship-status.wxp-partial-shipped {
+	background: #feefb3;
+	color: #9f6000;
+}
+
+.wxp-modal .wxp-ship-status.wxp-not-shipped {
+	background: #ffbaba;
+	color: #d8000c;
+}
+
+.wxp-modal .wxp-ship-status.wxp-refunded,
+.wxp-modal .wxp-ship-status.wxp-neutral {
+	background: var(--wxp-divider);
+	color: var(--wxp-muted);
+}
+
+/* ---------- Shipment: quantity stepper ( − | 2 / 12 | + )  + undo ---------- */
+
+.wxp-ship-control {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.wxp-stepper {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: stretch;
+	height: 32px;
+	overflow: hidden;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.wxp-stepper:focus-within {
+	border-color: var(--wxp-accent);
+	box-shadow: 0 0 0 1px var(--wxp-accent);
+}
+
+.wxp-modal .wxp-step {
+	width: 30px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: #f6f7f7;
+	color: #1d2327;
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.wxp-modal .wxp-step:hover {
+	background: var(--wxp-divider);
+	color: var(--wxp-accent);
+}
+
+.wxp-qty-wrap {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3px;
+	min-width: 64px;
+	margin: 0;
+	padding: 0 8px;
+	border-right: 1px solid var(--wxp-divider);
+	border-left: 1px solid var(--wxp-divider);
+	cursor: text;
+	font-variant-numeric: tabular-nums;
+}
+
+.wxp-modal input[type="number"].wxp-qty {
+	min-width: 1.6ch;
+	height: auto;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	color: #1d2327;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 30px;
+	text-align: right;
+	-moz-appearance: textfield;
+}
+
+.wxp-modal input[type="number"].wxp-qty:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.wxp-modal input[type="number"].wxp-qty::-webkit-outer-spin-button,
+.wxp-modal input[type="number"].wxp-qty::-webkit-inner-spin-button {
+	margin: 0;
+	-webkit-appearance: none;
+}
+
+.wxp-qty-max {
+	color: var(--wxp-muted);
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.wxp-modal .wxp-undo {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: #eef2fd;
+	background: color-mix(in srgb, var(--wxp-accent) 12%, #fff);
+	color: var(--wxp-accent);
+	cursor: pointer;
+	visibility: hidden;
+}
+
+.wxp-modal .wxp-undo.is-visible {
+	visibility: visible;
+}
+
+.wxp-modal .wxp-undo:hover {
+	background: var(--wxp-accent);
+	color: #fff;
+}
+
+.wxp-modal .wxp-undo:focus-visible {
+	outline: 2px solid var(--wxp-accent);
+	outline-offset: 2px;
+}
+
+.wxp-modal .wxp-undo .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wxp-note {
+	color: var(--wxp-muted);
+	font-size: 12px;
+	font-style: italic;
+	text-align: right;
+}
+
+.wxp-ship-error {
+	margin: 12px 20px;
+	padding: 8px 12px;
+	border-left: 4px solid #d63638;
+	background: #fcf0f1;
+	color: #1d2327;
+}
+
+.wxp-ship-error[hidden] {
+	display: none;
+}
+
+/* ---------- Shipment: footer ---------- */
+
+.wxp-ship-foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+}
+
+.wxp-ship-quick,
+.wxp-ship-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 16px;
+}
+
+.wxp-ship-actions {
+	gap: 8px;
+	margin-left: auto;
+}
+
+.wxp-modal .wxp-ship-quick .button-link {
+	font-size: 13px;
 	text-decoration: none;
 }
 
-/* Primary action (Update) */
-.wxp-modal button.wxp-shipment-bulk-action,
-.wxp-modal button.wxp-item-action {
-	background: #2271b1;
-	border-color: #2271b1;
-	color: #fff;
+.wxp-modal .wxp-ship-quick .button-link:hover {
+	text-decoration: underline;
 }
 
-.wxp-modal button.wxp-shipment-bulk-action:hover,
-.wxp-modal button.wxp-item-action:hover {
-	background: #135e96;
-	border-color: #135e96;
-	color: #fff;
+.wxp-modal .wxp-save.is-busy {
+	opacity: 0.8;
+	cursor: progress;
 }
 
-/* Secondary action (Mark Unshipped) */
-.wxp-modal button.wxp-item-action-secondary {
-	background: #fff;
-	border-color: #2271b1;
-	color: #2271b1;
+/* ---------- Small screens ---------- */
+
+@media screen and (max-width: 600px) {
+	.wxp-modal .wxp-modal-head,
+	.wxp-ship-summary,
+	.wxp-ship-row {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+
+	.wxp-ship-row {
+		grid-template-columns: 40px minmax(0, 1fr);
+	}
+
+	.wxp-ship-badge,
+	.wxp-ship-control {
+		grid-column: 2;
+		justify-self: start;
+		justify-content: flex-start;
+	}
+
+	.wxp-note {
+		text-align: left;
+	}
+
+	.wxp-ship-actions {
+		width: 100%;
+	}
+
+	.wxp-ship-actions .button {
+		flex: 1 1 0;
+		text-align: center;
+	}
 }
 
-.wxp-modal button.wxp-item-action-secondary:hover {
-	background: #f0f6fc;
-	border-color: #135e96;
-	color: #135e96;
+@media (prefers-reduced-motion: reduce) {
+	.wxp-progress > span {
+		transition: none;
+	}
 }

@@ -6,12 +6,12 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jodhavishalsingh@gmail.com&item_name=Donation For Plugin
 
-Requires at least: 6.9
-Tested up to: 7.0
+Requires at least: 6.5
+Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
-WC tested up to: 10.8.1
-Stable tag: 3.6
+WC tested up to: 11.1
+Stable tag: 3.7
 
 Ship WooCommerce orders in parts. Track shipped and remaining item quantities (refund-aware), show status badges, and backfill existing orders.
 
@@ -59,10 +59,10 @@ With optional partial shipment status management and a simple backfill tool for 
 [youtube https://youtu.be/Cy2B6_fUiG8]
 
 == Installation ==
-1. Simply install and activate the plugin.
-2. Now you can see Shipment button and icon on order edit page.
-3. you can set item shipment there.
-4. Partial Shipment Settings is under <strong>WooCommerce >> Settings >> Partial Shipment tab.</strong>
+1. Install and activate the plugin (WooCommerce must be active).
+2. Open an order: a **Shipment** button appears under the order items and each line item gets a shipment status and an edit icon.
+3. Enter the shipped quantity per item (or use the bulk action) and click **Update**. The order status updates automatically.
+4. Settings are under **WooCommerce → Settings → Partial Shipment**, including the tool that backfills shipment records for existing orders.
 
 == Frequently Asked Questions ==
 
@@ -70,22 +70,51 @@ With optional partial shipment status management and a simple backfill tool for 
 
 If you get stuck, you can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/wc-partial-shipment/).
 
+= Can I use it together with Advance Partial Shipment for WooCommerce? =
+
+The premium plugin replaces this one and uses the same shipment data. When the premium plugin is active this plugin stays idle and is deactivated automatically; your existing shipment records are kept and shown by the premium plugin. If you switch back, the totals of all premium parcels are shown and edited here.
+
 = Where can I get support for premium version ? =
 
-You can write us directly for premium version help or [Contact us](https://wpexpertshub.com/contact-us/), please do not post on wordpress support forum for premium version help.
+Email support@wpexpertshub.com or use the [contact form](https://wpexpertshub.com/contact-us/). Please do not post premium questions on the WordPress.org forum.
 
 == Screenshots ==
 
-1. Admin Orders List Page
-2. Shipment Details Popup on the Order Page
-3. Shipment Status on the Order Page
-4. Refunded Items in the Shipment Popup
-5. Single Item Shipment & Actions
-6. Customer Orders List Page
-7. Shipment Status on the Customer Order Details Page
-8. Partial Shipment Plugin Settings
+1. Orders list with the "Partially Shipped" order status.
+2. Shipment popup on the order screen: shipped quantity per item, progress and one Save button.
+3. Shipment status of each item on the order screen; the order status follows automatically.
+4. Refunded and virtual items in the shipment popup need no shipping.
+5. Single item shipment popup, opened with the pencil icon of an item.
+6. Order status in the customer's My Account orders list.
+7. Shipment status of each item on the customer's order details page.
+8. Partial Shipment settings.
 
 == Changelog ==
+
+= 3.7 - 2026-09-29 =
+* Fix - The "partially shipped" customer email showed a raw, unrendered HTML table (product name, qty, price) instead of a formatted items table, because the items table markup was escaped as text. Both the HTML and plain-text templates now output it correctly.
+* Fix - Plain-text email showed raw HTML price markup and could fatal when a product had been deleted.
+* Fix - Plain-text email left out the email's "Additional content" setting and printed a raw <br /> tag in the footer.
+* Fix - The "Partial shipment notification" order action added a "manually sent" note even when the email was disabled or the order had no billing email; the note now reflects whether the email was really sent.
+* Fix - Orders containing a virtual/downloadable item never switched to Completed automatically when every physical item was shipped (the virtual quantity was counted as shipped but not as shippable).
+* Fix - A refund issued after shipping could leave the shipped total above the remaining quantity, so the order never auto-completed. Shipped quantities are now capped per item, and refunding the last unshipped units of a "Partially Shipped" order now completes it.
+* Fix - Clicking Update in the Shipment popup with nothing shipped moved a Pending payment or On hold order to Processing (sending the "Processing order" email), and could also bring back a Cancelled, Refunded or Failed order. The status now only goes back to Processing from Partially Shipped or Completed, and cancelled, refunded or failed orders are never changed.
+* Fix - "Partially Shipped" orders were not treated as paid: customers could not download their downloadable products while an order was partially shipped, and these orders were left out of the customer's total spent and "verified owner" review checks.
+* Fix - Line items whose product was deleted after the order was placed always showed "Not Shipped" and were ignored when working out the order status.
+* Fix - The shipment AJAX handlers accepted item IDs belonging to other orders (and shipping lines); only product lines of the order being edited are saved now.
+* Fix - Two simultaneous requests for the same order (e.g. two admins updating the shipment at once, or the order-completed hook firing twice) could create duplicate shipment rows. Shipment-row creation now re-uses the row a concurrent request just created, and new installs enforce one row per order with a unique key.
+* Fix - Running together with Advance Partial Shipment for WooCommerce: the premium plugin was detected by an outdated folder name, so both plugins could load at once (duplicate settings, hooks and database errors). This plugin now stays idle while the premium plugin is active.
+* Fix - After downgrading from the premium plugin, only the first parcel of an order was counted and new shipment rows failed to save (the premium plugin removes the legacy `shipment_primary_id` column). Totals are now summed over all parcels and edits keep working.
+* Fix - On multisite, the plugin did not load when WooCommerce was activated per site instead of network-wide.
+* Tweak - Redesigned Shipment popup on the order screen: a progress summary with the resulting order status, product thumbnails, SKU and refunded quantities, live status badges, a quantity stepper per item, "Ship everything" / "Clear all" shortcuts and a single "Save shipment" button (replaces the tick-rows + Bulk Actions + Update steps). Changed rows are highlighted with a one-click undo, virtual and fully refunded items are shown as not needing shipping, a failed save keeps the popup open with your changes, and Enter saves. Works on small screens and with the keyboard.
+* Tweak - Redesigned settings page: a header with the number of Partially Shipped orders, settings grouped into cards (Order status, Shipment badges, Notification email, Backfill), on/off switches, a live preview of the status badges, the notification email's state with a link to its settings, and the backfill run state (running, last run). Works on small screens and follows the admin colour scheme. Option names are unchanged.
+* Tweak - Backfill now runs in batches of 50 orders: the first batch runs straight away and the rest continue in the background with Action Scheduler, so large stores no longer time out. Progress is shown on the settings page, and clicking the button again during a run does not start a second one.
+* Tweak - The Shipment popup no longer stays stuck behind a loading overlay when a request fails (for example after the page was left open overnight); requests are now asynchronous and show a message instead.
+* Tweak - Escaped product names before inserting them into the admin Shipment popup, hardening against a stored-XSS edge case if an order item name contains HTML.
+* Tweak - Added a database index on `partial_shipment_items.shipment_id`, used by every shipment lookup, to keep queries fast on stores with a large order history. Existing installs get it automatically through a version-checked upgrade routine (previously schema changes only applied on a fresh activation).
+* Tweak - Front-end stylesheet is only loaded on My Account pages; clearer default email subject; "Status" column heading and purchase-note colspan fixed in the HTML email; email template headers now name the correct theme override paths.
+* Tweak - Removed an unused localized nonce field left over from a previous refactor.
+* Tweak - Only declares the WooCommerce features it supports (HPOS, Cart & Checkout blocks, product editor). Tested with WordPress 7.1 and WooCommerce 11.1.
 
 = 3.6 - 2026-08-14 =
 * New - Refund-aware shipment quantities and labels: shipped/available counts use the net (post-refund) quantity, fully-refunded items show a "Refunded" label instead of "Not Shipped: 0", and the admin/order "Not Shipped" count now reflects the quantity still to ship.

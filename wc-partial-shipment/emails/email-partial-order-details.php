@@ -3,7 +3,7 @@
 /**
  * Order details table shown in emails.
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/email-order-details.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/email-partial-order-details.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -44,19 +44,20 @@ do_action('woocommerce_email_before_order_table', $order, $sent_to_admin, $plain
 			<tr>
 				<th class="td" scope="col" style="text-align:<?php echo esc_attr($text_align); ?>;"><?php esc_html_e('Product', 'wc-partial-shipment'); ?></th>
 				<th class="td" scope="col" style="text-align:<?php echo esc_attr($text_align); ?>;"><?php esc_html_e('Quantity', 'wc-partial-shipment'); ?></th>
-				<th class="td" scope="col" style="text-align:<?php echo esc_attr($text_align); ?>;"><?php esc_html_e('status', 'wc-partial-shipment'); ?></th>
+				<th class="td" scope="col" style="text-align:<?php echo esc_attr($text_align); ?>;"><?php esc_html_e('Status', 'wc-partial-shipment'); ?></th>
 				<th class="td" scope="col" style="text-align:<?php echo esc_attr($text_align); ?>;"><?php esc_html_e('Price', 'wc-partial-shipment'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-			echo esc_html(wxp_partial_shipment_init()->wc_get_email_partial_order_items($order, array( // WPCS: XSS ok.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-built HTML table, escaped internally by the underlying template; esc_html() would break the markup.
+			echo wxp_partial_shipment_init()->wc_get_email_partial_order_items($order, array(
 				'show_sku'      => (bool)$sent_to_admin,
 				'show_image'    => false,
 				'image_size'    => array(32, 32),
 				'plain_text'    => (bool)$plain_text,
 				'sent_to_admin' => (bool)$sent_to_admin,
-			)));
+			));
 			?>
 		</tbody>
 		<tfoot>

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Customer processing order email
+ * Customer "partially shipped" order email (plain text)
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-processing-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-partial-shipment.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -50,8 +50,18 @@ do_action('woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, $
  */
 do_action('woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email);
 
-echo esc_html_e('Thanks!', 'wc-partial-shipment') . "\n\n";
+echo "\n";
 
-echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+/*
+ * Show user-defined additional content - this is set in each email's settings.
+ */
+if ($additional_content) {
+	echo esc_html(wp_strip_all_tags(wptexturize($additional_content))) . "\n\n";
+}
 
-echo esc_html(apply_filters('woocommerce_email_footer_text', get_option('woocommerce_email_footer_text')));
+echo esc_html__('Thanks!', 'wc-partial-shipment') . "\n\n";
+
+echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+
+// The footer may contain <br> tags: turn them into new lines (WooCommerce strips any other tags in plain-text emails).
+echo wp_kses_post(preg_replace('/<br\s*\/?>/i', "\n", apply_filters('woocommerce_email_footer_text', get_option('woocommerce_email_footer_text'))));

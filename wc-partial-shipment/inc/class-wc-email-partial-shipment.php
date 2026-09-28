@@ -41,7 +41,7 @@ if (!class_exists('WC_Email_Customer_Partial_shipment', false)):
 		 */
 		public function get_default_subject()
 		{
-			return __('your order has been partially shipped.', 'wc-partial-shipment');
+			return __('Your {site_title} order #{order_number} has been partially shipped', 'wc-partial-shipment');
 		}
 
 		/**
@@ -60,9 +60,11 @@ if (!class_exists('WC_Email_Customer_Partial_shipment', false)):
 		 *
 		 * @param int            $order_id The order ID.
 		 * @param WC_Order|false $order Order object.
+		 * @return bool Whether the email was sent (false when disabled or without recipient).
 		 */
 		public function trigger($order_id, $order = false)
 		{
+			$sent = false;
 			$this->setup_locale();
 
 			if ($order_id && ! is_a($order, 'WC_Order')) {
@@ -77,10 +79,11 @@ if (!class_exists('WC_Email_Customer_Partial_shipment', false)):
 			}
 
 			if ($this->is_enabled() && $this->get_recipient()) {
-				$this->send($this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments());
+				$sent = (bool) $this->send($this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments());
 			}
 
 			$this->restore_locale();
+			return $sent;
 		}
 
 		/**

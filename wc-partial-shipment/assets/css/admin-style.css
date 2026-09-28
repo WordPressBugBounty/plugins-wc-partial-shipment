@@ -63,47 +63,6 @@ td.wxp-partital-line-item {
 	color: #646970;
 	background-color: #f0f0f1;
 }
-/* Leading glyph for partial shipment state removed per request */
-.wxp-order-shipment-table table.widefat{
-
-}
-.wxp-order-shipment-table table.widefat th input[type="checkbox"]{
-    margin: 0 0 0 15px;
-    vertical-align: middle;
-}
-.wxp-order-shipment-table table.widefat tbody td input[type="checkbox"]{
-    margin: 0 0 0 5px;
-    vertical-align: middle;
-}
-.wxp-order-shipment-table table th{
-    font-weight: bold;
-}
-.wxp-order-shipment-table table.widefat tbody td{
-    padding: 4px 10px;
-}
-.wxp-order-shipment-table table.widefat th.txt-ctr,
-.wxp-order-shipment-table table.widefat tbody td.txt-ctr{
-    text-align: center;
-}
-.wxp-order-shipment-table table.widefat th.txt-ltr,
-.wxp-order-shipment-table table.widefat tbody td.txt-ltr{
-    text-align: left;
-}
-.wxp-order-shipment-table table thead th.check-column {
-    padding: 6px 0;
-    vertical-align: bottom;
-}
-.wxp-order-shipment-table .wxp_partial_ship_foot{
-    margin: 10px 0;
-}
-.wxp_partial_ship_foot .wxp-select-foot,
-.wxp_partial_ship_foot .wxp-button-foot{
-    display: inline-block;
-}
-.wxp_partial_ship_foot .wxp-button-foot{
-    vertical-align: top;
-}
-
 a.wxp-top{
     text-decoration:none!important;
 }
@@ -147,23 +106,4 @@ a.wxp-top span.wxp-refunded{
     white-space: nowrap;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-div.wxp-order-shipment-table > table.widefat{
-    margin: 15px 0;
-}
-
-@media (min-width: 320px) and (max-width: 480px){
-    .wxp-order-shipment-table{
-        min-width: 270px;
-    }
-}
-@media (min-width: 481px) and (max-width: 767px) {
-    .wxp-order-shipment-table{
-        min-width:50%;
-    }
-}
-@media (min-width: 768px){
-    .wxp-order-shipment-table{
-        min-width:50%;
-    }
 }

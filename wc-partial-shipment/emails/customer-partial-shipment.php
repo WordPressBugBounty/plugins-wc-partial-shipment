@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Customer processing order email
+ * Customer "partially shipped" order email
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/customer-processing-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/customer-partial-shipment.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

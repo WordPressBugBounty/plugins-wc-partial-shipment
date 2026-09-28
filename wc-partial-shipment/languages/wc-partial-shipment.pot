@@ -1,224 +1,219 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the wc-partial-shipment package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 2026 WpExperts Hub
+# This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: wc-partial-shipment 3.5\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 18:14+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: Partial Shipment for WooCommerce 3.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-partial-shipment\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-28T19:15:52+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wc-partial-shipment\n"
 
-#: woocommerce-partial-shipment.php:105
-msgid "Settings"
+#. Plugin Name of the plugin
+#: woocommerce-partial-shipment.php
+#: classes/wxp-partial-shipment-settings.php:95
+msgid "Partial Shipment for WooCommerce"
 msgstr ""
 
-#: woocommerce-partial-shipment.php:106
-msgid "Get Pro"
+#. Plugin URI of the plugin
+#: woocommerce-partial-shipment.php
+msgid "https://wpexpertshub.com/plugins/wc-partial-shipment/"
 msgstr ""
 
-#: woocommerce-partial-shipment.php:136 woocommerce-partial-shipment.php:177
-#: woocommerce-partial-shipment.php:739
-msgid "Shipped"
+#. Description of the plugin
+#: woocommerce-partial-shipment.php
+msgid "Mark WooCommerce order items as shipped, partially shipped or not shipped, with a \"Partially Shipped\" order status and customer notification email."
 msgstr ""
 
-#: woocommerce-partial-shipment.php:137 woocommerce-partial-shipment.php:748
-msgid "Not Shipped"
+#. Author of the plugin
+#: woocommerce-partial-shipment.php
+msgid "WpExperts Hub"
 msgstr ""
 
-#: woocommerce-partial-shipment.php:138 woocommerce-partial-shipment.php:597
-#: woocommerce-partial-shipment.php:618 woocommerce-partial-shipment.php:742
-msgid "Partially Shipped"
+#. Author URI of the plugin
+#: woocommerce-partial-shipment.php
+msgid "https://wpexpertshub.com/"
 msgstr ""
 
-#: woocommerce-partial-shipment.php:139 woocommerce-partial-shipment.php:183
-#: woocommerce-partial-shipment.php:745
-msgid "Refunded"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:174
-#: classes/wxp-partial-shipment-settings.php:18
+#: classes/wxp-partial-shipment-settings.php:22
 msgid "Partial Shipment"
 msgstr ""
 
-#: woocommerce-partial-shipment.php:175
-msgid "Title"
-msgstr ""
+#: classes/wxp-partial-shipment-settings.php:87
+msgid "Partially shipped order"
+msgid_plural "Partially shipped orders"
+msgstr[0] ""
+msgstr[1] ""
 
-#: woocommerce-partial-shipment.php:176
-#: emails/email-partial-order-details.php:46
-msgid "Quantity"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:178
-msgid "Bulk Actions"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:179 woocommerce-partial-shipment.php:181
-msgid "Mark Shipped"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:180 woocommerce-partial-shipment.php:182
-msgid "Mark Unshipped"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:184
-msgid "Update"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:204
-msgid "Shipment Status"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:205 woocommerce-partial-shipment.php:218
-msgid "Manage Shipment"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:227
-msgid "Shipment"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:607
-msgid "Status"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:643
-msgid "Partial shipment notification"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:654
-msgid "Partial order details manually sent to customer."
-msgstr ""
-
-#: woocommerce-partial-shipment.php:783
-msgid "Order Completed by Woocommerce Partial Shipment."
-msgstr ""
-
-#: woocommerce-partial-shipment.php:787
-msgid "Order Processed by Woocommerce Partial Shipment."
-msgstr ""
-
-#: woocommerce-partial-shipment.php:791
-msgid "Order Partially Shipped by Woocommerce Partial Shipment."
-msgstr ""
-
-#: woocommerce-partial-shipment.php:869
-msgid "You are not allowed to do this."
-msgstr ""
-
-#: woocommerce-partial-shipment.php:891 woocommerce-partial-shipment.php:939
-msgid "Completed"
-msgstr ""
-
-#: woocommerce-partial-shipment.php:943
-#, php-format
-msgid ""
-"Partial Shipment: backfilled %1$d order(s) with status \"%2$s\"; %3$d "
-"already had shipment records and were skipped."
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:31
-msgid "Backfill existing orders"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:32
-msgid ""
-"Generate shipment records for past orders whose status matches the selection "
-"above. This is useful for orders placed before this plugin was active. "
-"Refunded quantities are excluded, and orders that already have shipment "
-"records are skipped."
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:34
-msgid "Backfill orders now"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:63
-msgid "WooCommerce Partial Shipment"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:68
-msgid "Partially Shipped status"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:69
-msgid ""
-"Register a custom \"Partially Shipped\" order status for orders where only "
-"some items have been shipped."
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:75
-msgid "Auto-complete when fully shipped"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:76
-msgid ""
-"Automatically move the order to Completed once every item has been marked as "
-"shipped."
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:82
-msgid "Hide status until partial"
-msgstr ""
-
-#: classes/wxp-partial-shipment-settings.php:83
-msgid ""
-"Hide the shipment status on the order page until at least one item has been "
-"partially shipped."
+#: classes/wxp-partial-shipment-settings.php:87
+msgid "View orders"
 msgstr ""
 
 #: classes/wxp-partial-shipment-settings.php:89
-msgid "Show status in orders list popup"
+msgid "(opens in a new tab)"
 msgstr ""
 
-#: classes/wxp-partial-shipment-settings.php:90
-msgid ""
-"Display the shipment status inside the order details popup on the "
-"WooCommerce orders list."
+#: classes/wxp-partial-shipment-settings.php:98
+msgid "Ship orders in parts: record how much of each item has shipped, follow it with status badges and tell customers which items are on their way."
 msgstr ""
 
-#: classes/wxp-partial-shipment-settings.php:96
-msgid "Backfill statuses"
+#: classes/wxp-partial-shipment-settings.php:100
+msgid "Documentation"
 msgstr ""
 
-#: classes/wxp-partial-shipment-settings.php:97
-msgid ""
-"Orders with the selected statuses that have no shipment record yet will be "
-"backfilled (refund-aware). Already-processed orders are skipped."
+#: classes/wxp-partial-shipment-settings.php:101
+msgid "Support forum"
 msgstr ""
 
-#: inc/class-wc-email-partial-shipment.php:21
-msgid "Partial shipment order"
+#: classes/wxp-partial-shipment-settings.php:131
+msgid "Shown next to each item on the order screen, in the orders list preview and on the customer's View Order page."
 msgstr ""
 
-#: inc/class-wc-email-partial-shipment.php:22
-msgid ""
-"This is an order notification sent to customers containing partially shipped "
-"order details."
+#: classes/wxp-partial-shipment-settings.php:154
+msgid "Enabled"
 msgstr ""
 
-#: inc/class-wc-email-partial-shipment.php:44
-msgid "your order has been partially shipped."
+#: classes/wxp-partial-shipment-settings.php:154
+msgid "Disabled"
 msgstr ""
 
-#: inc/class-wc-email-partial-shipment.php:55
-msgid "Your partially shipped order details"
+#: classes/wxp-partial-shipment-settings.php:158
+msgid "Manage email"
 msgstr ""
 
+#: classes/wxp-partial-shipment-settings.php:160
+msgid "Sent when you choose \"Partial shipment notification\" under Order actions on an order."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:186
+msgid "Backfill running…"
+msgstr ""
+
+#. translators: 1: order status label(s), 2: orders backfilled so far, 3: orders skipped so far.
+#: classes/wxp-partial-shipment-settings.php:193
+#, php-format
+msgid "Running in the background for \"%1$s\": %2$d backfilled and %3$d skipped so far."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:199
+msgid "Refresh"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:203
+msgid "Backfill orders now"
+msgstr ""
+
+#. translators: 1: date and time, 2: order status label(s), 3: orders backfilled, 4: orders skipped.
+#: classes/wxp-partial-shipment-settings.php:211
+#, php-format
+msgid "Last run %1$s for \"%2$s\": %3$d backfilled, %4$d skipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:221
+msgid "Not run yet."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:224
+msgid "Orders are processed in batches of 50. On larger stores the remaining batches continue in the background and the progress is shown here."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:236
+msgid "Order status"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:238
+msgid "How the order status follows the shipment."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:242
+msgid "Partially Shipped status"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:243
+msgid "Add a \"Partially Shipped\" order status, used while only some items have shipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:251
+msgid "Auto-complete when fully shipped"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:252
+msgid "Move the order to Completed as soon as every item has shipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:264
+msgid "Shipment badges"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:266
+msgid "Each order item gets a badge that shows how much of it has shipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:270
+msgid "Preview"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:274
+msgid "Hide until first shipment"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:275
+msgid "On the customer's View Order page, show the badges only once a shipment has been saved for the order."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:283
+msgid "Orders list preview"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:284
+msgid "Show the badges in the order preview popup on the Orders screen."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:296
+msgid "Notification email"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:298
+msgid "Tell the customer which items have shipped and which are still to come."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:302
+msgid "Partial shipment email"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:310
+msgid "Backfill existing orders"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:312
+msgid "Create shipment records for orders placed before this plugin was active. Refunded quantities are excluded, and orders that already have shipment records are skipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:316
+msgid "Order statuses"
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:317
+msgid "Orders with these statuses and no shipment record yet will have all their items marked as shipped."
+msgstr ""
+
+#: classes/wxp-partial-shipment-settings.php:325
+msgid "Run"
+msgstr ""
+
+#. translators: %s: Customer first name
 #: emails/customer-partial-shipment.php:29
 #: emails/plain/customer-partial-shipment.php:26
 #, php-format
 msgid "Hi %s,"
 msgstr ""
 
+#. translators: %s: Order number
 #: emails/customer-partial-shipment.php:31
 #: emails/plain/customer-partial-shipment.php:28
 #, php-format
@@ -226,10 +221,11 @@ msgid "Just to let you know &mdash; your order #%s has been partially shipped:"
 msgstr ""
 
 #: emails/customer-partial-shipment.php:60
-#: emails/plain/customer-partial-shipment.php:53
+#: emails/plain/customer-partial-shipment.php:62
 msgid "Thanks!"
 msgstr ""
 
+#. translators: %s: Order ID.
 #: emails/email-partial-order-details.php:37
 #, php-format
 msgid "[Order #%s]"
@@ -239,25 +235,259 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
+#: emails/email-partial-order-details.php:46
+msgid "Quantity"
+msgstr ""
+
 #: emails/email-partial-order-details.php:47
-msgid "status"
+#: woocommerce-partial-shipment.php:765
+msgid "Status"
 msgstr ""
 
 #: emails/email-partial-order-details.php:48
 msgid "Price"
 msgstr ""
 
-#: emails/email-partial-order-details.php:81
-#: emails/plain/email-partial-order-details.php:46
+#: emails/email-partial-order-details.php:82
+#: emails/plain/email-partial-order-details.php:47
 msgid "Note:"
 msgstr ""
 
+#. translators: %1$s: Order ID. %2$s: Order date
 #: emails/plain/email-partial-order-details.php:26
 #, php-format
 msgid "[Order #%1$s] (%2$s)"
 msgstr ""
 
-#: emails/plain/email-partial-order-details.php:51
+#. translators: %s: Order link.
+#: emails/plain/email-partial-order-details.php:52
 #, php-format
 msgid "View order: %s"
+msgstr ""
+
+#: inc/class-wc-email-partial-shipment.php:21
+msgid "Partial shipment order"
+msgstr ""
+
+#: inc/class-wc-email-partial-shipment.php:22
+msgid "This is an order notification sent to customers containing partially shipped order details."
+msgstr ""
+
+#: inc/class-wc-email-partial-shipment.php:44
+msgid "Your {site_title} order #{order_number} has been partially shipped"
+msgstr ""
+
+#: inc/class-wc-email-partial-shipment.php:55
+msgid "Your partially shipped order details"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:134
+msgid "Settings"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:135
+msgid "Get Pro"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:165
+#: woocommerce-partial-shipment.php:902
+msgid "Shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:166
+#: woocommerce-partial-shipment.php:911
+msgid "Not Shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:167
+#: woocommerce-partial-shipment.php:755
+#: woocommerce-partial-shipment.php:776
+#: woocommerce-partial-shipment.php:905
+msgid "Partially Shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:168
+#: woocommerce-partial-shipment.php:908
+msgid "Refunded"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:204
+msgid "The shipment could not be loaded or saved. Please reload the page and try again."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:209
+#: woocommerce-partial-shipment.php:287
+msgid "Shipment"
+msgstr ""
+
+#. translators: %s: order number.
+#: woocommerce-partial-shipment.php:211
+#, php-format
+msgid "Order #%s shipment"
+msgstr ""
+
+#. translators: 1: units shipped, 2: units to ship.
+#: woocommerce-partial-shipment.php:213
+#, php-format
+msgid "%1$s of %2$s units shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:214
+msgid "Not shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:215
+msgid "Partially shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:216
+msgid "Fully shipped"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:217
+msgid "Nothing to ship"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:218
+msgid "Unsaved changes"
+msgstr ""
+
+#. translators: %s: product SKU.
+#: woocommerce-partial-shipment.php:220
+#, php-format
+msgid "SKU: %s"
+msgstr ""
+
+#. translators: %s: ordered quantity.
+#: woocommerce-partial-shipment.php:222
+#, php-format
+msgid "Qty %s"
+msgstr ""
+
+#. translators: %s: refunded quantity.
+#: woocommerce-partial-shipment.php:224
+#, php-format
+msgid "%s refunded"
+msgstr ""
+
+#. translators: %s: shipped quantity before the change.
+#: woocommerce-partial-shipment.php:226
+#, php-format
+msgid "Undo change (was %s)"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:227
+msgid "No shipping needed"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:228
+msgid "Virtual item"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:229
+msgid "Fully refunded"
+msgstr ""
+
+#. translators: 1: product name, 2: quantity that can be shipped.
+#: woocommerce-partial-shipment.php:231
+#, php-format
+msgid "Shipped quantity for %1$s, out of %2$s"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:232
+msgid "Decrease"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:233
+msgid "Increase"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:234
+msgid "Ship everything"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:235
+msgid "Clear all"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:236
+msgid "Cancel"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:237
+msgid "Save shipment"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:238
+msgid "Saving…"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:239
+msgid "The shipment could not be saved. Please try again."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:263
+msgid "Shipment Status"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:264
+#: woocommerce-partial-shipment.php:278
+msgid "Manage Shipment"
+msgstr ""
+
+#. translators: %s: Number of items partially shipped.
+#: woocommerce-partial-shipment.php:782
+#, php-format
+msgid "Partially Shipped <span class=\"count\">(%s)</span>"
+msgid_plural "Partially Shipped <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce-partial-shipment.php:801
+msgid "Partial shipment notification"
+msgstr ""
+
+#: woocommerce-partial-shipment.php:814
+msgid "Partial order details manually sent to customer."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:817
+msgid "Partial shipment email was not sent. Check that it is enabled under WooCommerce > Settings > Emails and that the order has a billing email address."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:946
+msgid "Order Completed by Woocommerce Partial Shipment."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:952
+msgid "Order Processed by Woocommerce Partial Shipment."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:956
+msgid "Order Partially Shipped by Woocommerce Partial Shipment."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:1036
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:1058
+#: woocommerce-partial-shipment.php:1200
+msgid "Completed"
+msgstr ""
+
+#. translators: 1: number of orders backfilled, 2: order status label(s), 3: number skipped (already had records).
+#: woocommerce-partial-shipment.php:1204
+#, php-format
+msgid "Partial Shipment: backfilled %1$d order(s) with status \"%2$s\"; %3$d already had shipment records and were skipped."
+msgstr ""
+
+#. translators: 1: order status label(s), 2: number of orders backfilled so far, 3: number skipped so far.
+#: woocommerce-partial-shipment.php:1221
+#, php-format
+msgid "Partial Shipment: backfilling orders with status \"%1$s\" in the background. %2$d order(s) backfilled and %3$d skipped so far."
+msgstr ""
+
+#: woocommerce-partial-shipment.php:1275
+msgid "Partial Shipment for WooCommerce is inactive because Advance Partial Shipment for WooCommerce is active and already includes all of its features. Your shipment data is shared between both plugins."
 msgstr ""

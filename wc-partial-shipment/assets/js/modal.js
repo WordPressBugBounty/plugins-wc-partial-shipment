@@ -3,6 +3,7 @@
 
 	var WXPModal = {
 		dialog: null,
+		returnTo: null,
 
 		init: function () {
 			if (this.dialog) {
@@ -12,10 +13,11 @@
 			var d = document.createElement('dialog');
 			d.id = 'wxp-modal';
 			d.className = 'wxp-modal';
+			d.setAttribute('aria-labelledby', 'wxp-modal-title');
 			d.innerHTML =
 				'<div class="wxp-modal-inner">' +
 					'<div class="wxp-modal-head">' +
-						'<h2 class="wxp-modal-title"></h2>' +
+						'<h2 class="wxp-modal-title" id="wxp-modal-title"></h2>' +
 						'<button type="button" class="wxp-modal-close" aria-label="Close">&times;</button>' +
 					'</div>' +
 					'<div class="wxp-modal-body"></div>' +
@@ -42,22 +44,41 @@
 					self.close();
 				}
 			});
+
+			// However the dialog closes, put focus back where it was (if that element still exists).
+			d.addEventListener('close', function () {
+				var el = self.returnTo;
+				self.returnTo = null;
+				if (el && typeof el.focus === 'function' && document.body.contains(el)) {
+					el.focus();
+				}
+			});
 		},
 
+		/**
+		 * @param {Object} opts title, body (HTML), foot (HTML), className (extra dialog class),
+		 *                      onOpen(dialog) called after the content is in place.
+		 */
 		open: function (opts) {
 			this.init();
 			opts = opts || {};
 
+			if (!this.dialog.open) {
+				this.returnTo = document.activeElement;
+			}
+			this.dialog.className = 'wxp-modal' + (opts.className ? ' ' + opts.className : '');
 			this.dialog.querySelector('.wxp-modal-title').textContent = opts.title || '';
 			this.dialog.querySelector('.wxp-modal-body').innerHTML = opts.body || '';
-			this.dialog.querySelector('.wxp-modal-foot').innerHTML = opts.foot || '';
+			var foot = this.dialog.querySelector('.wxp-modal-foot');
+			foot.innerHTML = opts.foot || '';
+			foot.hidden = !opts.foot;
+
+			if (!this.dialog.open) {
+				this.dialog.showModal();
+			}
 
 			if (typeof opts.onOpen === 'function') {
 				opts.onOpen(this.dialog);
-			}
-
-			if (! this.dialog.open) {
-				this.dialog.showModal();
 			}
 		},
 
