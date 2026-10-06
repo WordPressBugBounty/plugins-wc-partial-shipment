@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) {
 	exit;
 	// Exit if accessed directly
 }
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound -- Established public class name of this plugin.
 class Wxp_Partial_Shipment_Settings
 {
 

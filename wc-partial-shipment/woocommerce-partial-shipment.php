@@ -3,9 +3,9 @@
 /**
  * Plugin Name: Partial Shipment for WooCommerce
  * Plugin URI: https://wpexpertshub.com/plugins/wc-partial-shipment/
- * Description: Mark WooCommerce order items as shipped, partially shipped or not shipped, with a "Partially Shipped" order status and customer notification email.
+ * Description: Ship WooCommerce orders in parts: record shipped quantities per item, update the order status automatically and show customers what has shipped.
  * Author: WpExperts Hub
- * Version: 3.7
+ * Version: 3.8
  * Author URI: https://wpexpertshub.com/
  * Text Domain: wc-partial-shipment
  * Domain Path: /languages
@@ -13,6 +13,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Requires Plugins: woocommerce
  * Requires at least: 6.5
+ * Tested up to: 7.1
  * Requires PHP: 7.4
  * WC requires at least: 8.0
  * WC tested up to: 11.1
@@ -21,6 +22,7 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound -- Established public class name of this plugin.
 class WXP_Partial_Shipment
 {
 
@@ -32,6 +34,8 @@ class WXP_Partial_Shipment
 	protected static $_instance = null;
 	protected $wc_partial_labels = array();
 	protected $wc_partial_shipment_settings = array();
+	/** Shipped quantities per order for the current request (an order page asks once per item row). */
+	protected $shipment_data_cache = array();
 	public static function instance()
 	{
 
@@ -44,9 +48,11 @@ class WXP_Partial_Shipment
 	function __construct()
 	{
 		if (!defined('WXP_PARTIAL_SHIP_VER')) {
-			define('WXP_PARTIAL_SHIP_VER', '3.7');
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Established public constant of this plugin.
+			define('WXP_PARTIAL_SHIP_VER', '3.8');
 		}
 		if (!defined('WXP_PARTIAL_SHIP_DIR')) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Established public constant of this plugin.
 			define('WXP_PARTIAL_SHIP_DIR', __DIR__);
 		}
 		add_action('before_woocommerce_init', array($this, 'hpos_compatibility'));
@@ -497,6 +503,7 @@ class WXP_Partial_Shipment
 	function wxp_set_item_shipped_qty($order_id, $item_id, $qty)
 	{
 		global $wpdb;
+		$this->wxp_flush_shipment_cache();
 		$qty         = max(0, (int) $qty);
 		$shipment_id = (int) $this->get_or_create_shipment_id($order_id);
 		if (! $shipment_id) {
@@ -553,6 +560,7 @@ class WXP_Partial_Shipment
 				array('%d', '%d', '%d')
 			);
 		}
+		$this->wxp_flush_shipment_cache();
 	}
 
 	/**
@@ -594,6 +602,10 @@ class WXP_Partial_Shipment
 	function get_wxp_shipment_data($order_id)
 	{
 		global $wpdb;
+		$order_id = (int) $order_id;
+		if (isset($this->shipment_data_cache[$order_id])) {
+			return $this->shipment_data_cache[$order_id];
+		}
 		$shipment = array();
 		// Sum over every shipment row of the order (one row here, possibly several
 		// when the data was created by the premium plugin).
@@ -610,7 +622,14 @@ class WXP_Partial_Shipment
 				}
 			}
 		}
+		$this->shipment_data_cache[$order_id] = $shipment;
 		return $shipment;
+	}
+
+	/** Forget the shipped quantities remembered for this request (after any write to the shipment tables). */
+	function wxp_flush_shipment_cache()
+	{
+		$this->shipment_data_cache = array();
 	}
 
 	/**
@@ -922,8 +941,9 @@ class WXP_Partial_Shipment
 			return;
 		}
 
-		// Never revive a cancelled, refunded or failed order from the shipment screen.
-		if ($order->has_status(array('cancelled', 'refunded', 'failed', 'trash', 'checkout-draft'))) {
+		// Never revive a cancelled, refunded or failed order from the shipment screen, and never turn an unpaid
+		// (Pending payment) order into a paid-status one (Partially Shipped / Completed count as paid).
+		if ($order->has_status(array('cancelled', 'refunded', 'failed', 'trash', 'checkout-draft', 'pending'))) {
 			return;
 		}
 

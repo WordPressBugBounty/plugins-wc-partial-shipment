@@ -1,82 +1,118 @@
 === Partial Shipment for WooCommerce ===
-
 Contributors: wpexpertshub, jodhavishalsingh
-Tags: Partial Shipment for WooCommerce,WooCommerce Partial Shipment,Partial Shipment,woocommerce Shipment,WooCommerce Partial Shipping
+Tags: partial shipment, partial shipping, split shipment, order fulfillment, woocommerce shipment
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jodhavishalsingh@gmail.com&item_name=Donation For Plugin
-
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jodhavishalsingh@gmail.com&item_name=Donation+For+Partial+Shipment+for+WooCommerce
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 11.1
-Stable tag: 3.7
+Stable tag: 3.8
 
-Ship WooCommerce orders in parts. Track shipped and remaining item quantities (refund-aware), show status badges, and backfill existing orders.
+Ship WooCommerce orders in parts: record shipped quantities per item, update the order status automatically and show customers what has shipped.
 
 == Description ==
 
-Partial Shipment for WooCommerce makes it easy to manage orders that need to be shipped in multiple parts. Store managers can ship specific products or quantities directly from the WooCommerce order edit screen while keeping the original order intact.
-The plugin keeps track of shipped and remaining quantities, automatically accounts for refunded items, and provides clear shipment information to both store managers and customers. Customers can view which items have been shipped directly from their order details page.
-With optional partial shipment status management and a simple backfill tool for existing orders, the plugin provides an easy way to manage partial fulfillment in WooCommerce.
+Not every order ships in one go. Items can be out of stock or on backorder, come from different suppliers or simply need more than one parcel. **Partial Shipment for WooCommerce** lets you record exactly what has shipped for each order item, keeps the order status up to date and shows your customers what is on its way and what is still to come.
 
-= Basic Features =
+= Why use Partial Shipment for WooCommerce? =
 
-🔹 Partially ship a WooCommerce order, per item quantity, directly from the order edit screen.
-🔹 Optional custom "Partially Shipped" order status.
-🔹 Refund-aware quantities — fully-refunded items are marked "Refunded" and excluded from shippable counts, and the "Not Shipped" badge shows the quantity still to ship.
-🔹 Backfill existing orders of any status with shipment records in one click (refund-aware, skips orders that already have records).
-🔹 Status badges on the admin order-list popup and the customer's View Order page.
-🔹 Customer can see the shipped items on the order detail page.
-🔹 Translation ready — ships a .pot and loads the text domain.
+* **Always know what is left to ship** - shipped and remaining quantities of every item, right on the order screen.
+* **Fewer "where is the rest of my order?" emails** - customers see a shipment badge next to each item on their order page.
+* **The order status follows the shipment** - Partially Shipped while items are still to ship, Completed when everything has gone (both optional).
+* **Refunds are taken into account** - refunded quantities no longer count as "to ship", so orders still complete correctly.
 
-➡ <strong>[GET PREMIUM VERSION NOW!](https://wpexpertshub.com/plugins/advance-partial-shipment-for-woocommerce/)</strong>
+= How it works =
 
-= Premium Features =
+1. Open an order and click **Shipment** under the order items.
+2. Set the shipped quantity of each item, or click "Ship everything", and save.
+3. The order status follows the shipment: Partially Shipped while items are still to ship, Completed once everything has shipped.
+4. Each item gets a shipment badge on the order screen and on the customer's order page, and you can email the customer from the order actions.
 
-== Key Features ==
+= Features =
 
-&#9989; Partially ship WooCommerce orders with specific products or quantities.
-&#9989; Add Tracking Number, Tracking URL, and Shipping Provider to each shipment.
-&#9989; Create multiple partial or full shipments for a single order.
-&#9989; Manage shipments through Ready, Picked, Dispatched, and Delivered statuses.
-&#9989; Automatically update the order to "Partially Shipped" and complete it when fully shipped.
-&#9989; Send automatic shipment notification emails with tracking information.
-&#9989; Choose when to send shipment emails — when created or when marked as Picked.
-&#9989; Display shipment details, tracking information, and shipment timeline to customers.
-&#9989; Add Estimated Delivery Date, customer notes, and internal shipment notes.
-&#9989; Print Packing Slips and Delivery Notes for individual shipments.
-&#9989; Provide a public shipment tracking page using a shortcode.
-&#9989; Add custom Shipping Providers and tracking URLs.
-&#9989; Retrieve and update shipment data using the REST API.
-&#9989; Send shipment events to external systems using Webhooks.
-&#9989; Track fulfillment progress with Fulfillment Reports and CSV export.
-&#9989; Automatically account for refunded quantities when calculating remaining items to ship.
-&#9989; Bulk create shipments and backfill existing WooCommerce orders.
-&#9989; Fast and dedicated support.
+* **Shipment popup** on the order screen - quantity stepper per item, progress summary, product image and SKU, "Ship everything" and "Clear all", and one Save button. The pencil icon of an item opens the same popup for that item only.
+* **"Partially Shipped" order status** (optional) and **automatic completion** when every item has shipped (optional). Orders waiting for payment, and cancelled, refunded or failed orders, are never moved.
+* **Shipment badges** - Shipped, Partially Shipped, Not Shipped and Refunded, with quantities, on the order screen, in the order preview on the Orders list and on the customer's View Order page.
+* **Refund-aware** - refunded quantities no longer count as "to ship", fully refunded items show "Refunded", and virtual items need no shipping.
+* **Customer email** - send the "Partial shipment order" email, with the shipped and remaining items, from Order actions > Partial shipment notification. Edit it under WooCommerce > Settings > Emails.
+* **Existing orders** - one click creates shipment records for older orders of the statuses you choose. Large stores are processed in the background in batches.
+* **Manual completion** - completing an order by hand marks all of its items as shipped.
+* **Works with** High-Performance Order Storage (HPOS), the Cart and Checkout blocks and multisite. Translation ready.
+
+= Privacy =
+
+Shipment records (order, items and shipped quantities) are stored in two tables in your own WordPress database. The plugin adds no tracking, sets no cookies and sends no data to external services.
+
+= ⭐ Premium: Advance Partial Shipment for WooCommerce =
+
+**Give customers tracking for every parcel.** The premium version adds tracking numbers, shipment emails and a tracking page, so customers always know where each part of their order is.
+
+* ✅ **Multiple shipments per order** - each with its own tracking number, tracking URL and shipping provider.
+* ✅ **Shipping providers** - built-in carriers for each country, plus your own providers and tracking URLs.
+* ✅ **Shipment statuses** - Ready, Picked, Dispatched and Delivered, with the delivery date recorded.
+* ✅ **Automatic shipment emails** with tracking details, sent when a shipment is created or when it is marked as Picked.
+* ✅ **Estimated delivery date**, customer notes and internal notes for each shipment.
+* ✅ **Customer tracking** - a shipment timeline on the customer's order page and a public tracking page (shortcode).
+* ✅ **Packing slips and delivery notes** for each shipment (with the free PDF Invoice for WooCommerce plugin).
+* ✅ **REST API and webhooks** to connect your warehouse or other systems.
+* ✅ **Fulfillment Report** with CSV export.
+* ✅ **Bulk shipments and backfill** of existing orders.
+* ✅ **Data retention** - old shipment data can be removed automatically.
+* ✅ **Dedicated support** from the plugin developers.
+
+👉 **[Get Advance Partial Shipment for WooCommerce](https://wpexpertshub.com/plugins/advance-partial-shipment-for-woocommerce/)**
 
 [youtube https://youtu.be/Cy2B6_fUiG8]
 
+= For developers =
+
+* `wxp_partial_shipment_labels` filter - the badge labels.
+* `wxp_partial_shipping_settings` filter - the settings fields.
+* `wxp_backfill_batch_size` filter - orders per background batch when creating records for existing orders (default 50).
+* `wxp_order_status` action - fires when the shipment of an order changes (`$order_id`); the plugin updates the order status on it.
+* Email template override: copy `emails/customer-partial-shipment.php` to `yourtheme/woocommerce/emails/customer-partial-shipment.php`.
+
 == Installation ==
-1. Install and activate the plugin (WooCommerce must be active).
-2. Open an order: a **Shipment** button appears under the order items and each line item gets a shipment status and an edit icon.
-3. Enter the shipped quantity per item (or use the bulk action) and click **Update**. The order status updates automatically.
-4. Settings are under **WooCommerce → Settings → Partial Shipment**, including the tool that backfills shipment records for existing orders.
+
+1. Go to Plugins > Add New Plugin, search for "Partial Shipment for WooCommerce", then install and activate it. WooCommerce must be active.
+2. Go to WooCommerce > Settings > Partial Shipment to choose the order status options and where the badges are shown, and to create shipment records for your existing orders.
+3. Open an order and click **Shipment** under the order items to record what has shipped.
 
 == Frequently Asked Questions ==
 
-= Where can I get support or talk to other users ? =
+= Can I add tracking numbers? =
 
-If you get stuck, you can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/wc-partial-shipment/).
+Not in the free version. Tracking numbers, tracking URLs and shipping providers are part of Advance Partial Shipment for WooCommerce.
+
+= Is the customer emailed automatically? =
+
+No. Send the email when you want from the order screen: Order actions > Partial shipment notification. It lists the shipped items and the items still to come.
+
+= What happens with refunded and virtual items? =
+
+Refunded quantities are taken off the quantity to ship, and fully refunded items show a "Refunded" badge. Virtual items need no shipping, so an order is complete once all physical items have shipped.
+
+= What about orders placed before I installed the plugin? =
+
+Go to WooCommerce > Settings > Partial Shipment, choose the order statuses under "Backfill existing orders" and run it. All items of those orders are marked as shipped; orders that already have shipment records are skipped.
 
 = Can I use it together with Advance Partial Shipment for WooCommerce? =
 
 The premium plugin replaces this one and uses the same shipment data. When the premium plugin is active this plugin stays idle and is deactivated automatically; your existing shipment records are kept and shown by the premium plugin. If you switch back, the totals of all premium parcels are shown and edited here.
 
-= Where can I get support for premium version ? =
+= Where can I get support or talk to other users? =
+
+Please open a topic in the [support forum](https://wordpress.org/support/plugin/wc-partial-shipment/).
+
+= Where can I get support for the premium version? =
 
 Email support@wpexpertshub.com or use the [contact form](https://wpexpertshub.com/contact-us/). Please do not post premium questions on the WordPress.org forum.
+
+= Why did my order that is waiting for payment keep its status? =
+Saving shipped quantities never changes an order that is still "Pending payment", because Partially Shipped and Completed count as paid statuses in WooCommerce. Cancelled, refunded and failed orders are never changed either.
 
 == Screenshots ==
 
@@ -90,6 +126,11 @@ Email support@wpexpertshub.com or use the [contact form](https://wpexpertshub.co
 8. Partial Shipment settings.
 
 == Changelog ==
+
+= 3.8 - 2026-10-06 =
+* Fix - Saving shipped quantities on an unpaid order ("Pending payment") moved it to "Partially Shipped" or "Completed", which count as paid statuses. The shipment screen no longer changes the status of a Pending payment order (it still never touches Cancelled, Refunded or Failed orders).
+* Tweak - The shipped quantities of an order are read once per page instead of once per item row (faster order screens with many lines).
+* Tweak - Tested with PHP 8.2 - 8.5, WooCommerce High-Performance Order Storage and legacy order storage, and the Advance Partial Shipment switch (shipment data is shared).
 
 = 3.7 - 2026-09-29 =
 * Fix - The "partially shipped" customer email showed a raw, unrendered HTML table (product name, qty, price) instead of a formatted items table, because the items table markup was escaped as text. Both the HTML and plain-text templates now output it correctly.
@@ -221,3 +262,11 @@ Email support@wpexpertshub.com or use the [contact form](https://wpexpertshub.co
 
 = 1.0 - 02/05/2018 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 3.8 =
+Unpaid (Pending payment) orders are no longer moved to Partially Shipped / Completed when you record shipments. No manual steps.
+
+= 3.7 =
+Fixes the partial shipment email, order statuses with refunded or virtual items, and "Partially Shipped" orders not counting as paid. New Shipment popup and settings page.
